@@ -6,7 +6,6 @@ import fetchJson from './helpers/fetch-json.js'
 
 // // Stel het basis endpoint in
 const apiUrl = "https://fdnd-agency.directus.app/items/"
-const apiItems = (apiUrl + '/oba_item')
 const apiFamily = (apiUrl + 'oba_family')
 const apiProfile = (apiUrl + 'oba_profile')
 const apiItem = (apiUrl + 'oba_item?fields=*,afbeelding.id,afbeelding.height,afbeelding.width')
@@ -34,30 +33,6 @@ app.get('/', function (request, response) {
     })
 })
 
-//Profile Page
-app.get('/personal-page/:id', function (request, response) {
-    // Maak twee afzonderlijke fetch-aanroepen naar families en profiles
-    Promise.all([fetchJson(apiItems), fetchJson(apiProfile)])
-        .then(([apiItems, apiProfiles]) => {
-            // families en profiles bevatten de opgehaalde data van de API
-            // Je kunt hier de gewenste bewerkingen uitvoeren voordat je ze doorgeeft aan de view
-            // console.log(apiItems);
-            // console.log(apiProfiles);
-
-            // Render de chooseProfile view en geef de opgehaalde data mee
-            response.render('personal-page', {
-                apiItems: apiItems.data,
-                apiProfiles: apiProfiles.data
-            });
-        })
-        .catch((error) => {
-            // Behandel eventuele fouten die optreden tijdens het ophalen van de data
-            console.error('Error fetching data:', error);
-            // Stuur een foutbericht naar de client
-            response.status(500).send('Error fetching data');
-        });
-});
-
 app.get('/favorites', function(request, response) {
 
     let leeslijstFetch =  `${apiUrl}oba_bookmarks?fields=*.*`
@@ -78,7 +53,9 @@ app.get('/favorites', function(request, response) {
                 response.render('favorites_empty');
             }
     })
-})// Stel het poortnummer in waar express op moet gaan luisteren
+})
+  
+// Stel het poortnummer in waar express op moet gaan luisteren
 app.set('port', process.env.PORT || 8001)
 
 // Start express op, haal daarbij het zojuist ingestelde poortnummer op
