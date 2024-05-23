@@ -1,8 +1,15 @@
 /* favorites */
 
 /* leeslijst.ejs */
-.favorites article {
-    width: 98%;
+.favorites{
+    padding-left: 5.4375em;
+    padding-top: var(--large);
+  }
+
+  .favorites ul{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: var(--large);
   }
   
   .favorites ul h2 {
@@ -17,22 +24,23 @@
     cursor: pointer;
     justify-content: flex-end;
   }
+
+  .favorites ul li img {
+    object-fit: cover;
+    width: 70%;
+  }
   
   /* .favorites ul li img {
      width: 30%; 
   }  */
   
   @media (width > 80em) {
-    .favorites ul {
-      overflow: auto;
-      display: flex;
-      gap: 2em;
-      scrollbar-color: red transparent;
-      scrollbar-width: thin;
-    }
-  
-    .favorites ul h3 {
-      height: -webkit-fill-available;
+
+
+    .favorites ul{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      row-gap: var(--large);
     }
   
     .favorites ul li img {
@@ -53,16 +61,13 @@
     height: 100vh;
     flex-direction: column;
     text-align: center;
-    padding-left: 6em;
     color: #5883ff;
   }
   
-  .FavoritesEmp svg {
-    color: #5883ff;
-  }
   
-  .FavoritesEmp h2 {
+  .FavoritesEmp h1 {
     color: #5883ff;
+    font-size: 2em;
   }
   
   .FavoritesEmp p {
@@ -70,12 +75,48 @@
   }
   
   @media (width > 60em) {
-    .FavoritesEmp h2 {
+
+    .FavoritesEmp {
+      display: flex;
+      padding-left: var(--extra-extra-large);
+      padding-top: var(--large);
+      align-items: flex-start;
+  }
+}
+
+    .FavoritesEmp h1 {
       font-size: 4em;
+      animation: emptymate 2s 1;
     }
   
     .FavoritesEmp p {
-      font-size: 2em;
-      word-wrap: break-word;
+      font-size: 1em;
+      text-align: left;
+      max-width: 30em;
+      animation: emptymate 2s 1;
+      animation-delay: 2s;
+      opacity: 1;
     }
-  }
+
+    @keyframes emptymate {
+      0%{
+        opacity: 0;
+      }
+      20%{
+        opacity: 1;
+        scale: 1.2;
+      }
+      40%{
+        scale: 0.6;
+      }
+      60%{
+        scale: 1.2;
+      }
+      80%{
+        scale: 0.6;
+      }
+      100%{
+        scale: 1.2;
+        opacity: 1;
+      }
+    }

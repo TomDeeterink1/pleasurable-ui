@@ -75,5 +75,6 @@
   body {
     font-family: "Poppins", sans-serif;
     background-color: var(--body-color);
+    transition: var(--tran-05);
   }
 

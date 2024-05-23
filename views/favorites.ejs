@@ -1,14 +1,15 @@
 <%- include('./partials/head') %>
-<main class="favorites">
-    <article>
+    <article class="favorites">
     
         <ul>
             <% items.forEach(item => { %>
             <li>
                 <a href="./detail/<%= item.id %> ">
-                    <h3><%= item.title %></h3>
-                    <img src="https://fdnd-agency.directus.app/assets/<%= item.afbeelding %>" alt="<%= item.title %> Image" height="300" width="200">
-                    <p>€ <%= item.price %></p>
+                    <picture>
+                        <source srcset="https://fdnd-agency.directus.app/assets/<%= item.afbeelding %>?&format=avif" type="image/avif">
+                        <source srcset="https://fdnd-agency.directus.app/assets/<%= item.afbeelding %>?&format=webp" type="image/webp" >   
+                        <img src="https://fdnd-agency.directus.app/assets/<%= item.afbeelding %>" alt="<%= item.title %> Image" height="<%= item.afbeelding.height %>" width="<%= item.afbeelding.width %>">
+                    </picture>
                 </a>       
             </li>
             
@@ -16,6 +17,5 @@
         </ul>
       </article>
       <button class="borrow">Lenen</button>
-    </main>
 
 <%- include('./partials/foot') %>
