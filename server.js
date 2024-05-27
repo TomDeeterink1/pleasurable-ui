@@ -33,6 +33,28 @@ app.get('/', function (request, response) {
     })
 })
 
+app.get('/favorites', function(request, response) {
+
+    let leeslijstFetch =  `${apiUrl}oba_bookmarks?fields=*.*`
+  
+    fetchJson(leeslijstFetch)
+    .then(({data}) => {
+      return data.map((bookmark) =>{
+        return bookmark.item
+      })
+    })
+    .then(itemsOpLeeslijst => {
+      if (itemsOpLeeslijst.length) {
+                response.render('favorites', {
+                    items: itemsOpLeeslijst
+                });
+            } else {
+                // Render lege staat (empty state)
+                response.render('favorites_empty');
+            }
+    })
+})
+  
 // Stel het poortnummer in waar express op moet gaan luisteren
 app.set('port', process.env.PORT || 8001)
 

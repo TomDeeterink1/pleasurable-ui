@@ -1,0 +1,21 @@
+<%- include('./partials/head') %>
+    
+    
+        <ul class="favorites">
+            <% items.forEach(item => { %>
+            <li>
+                <a href="./detail/<%= item.id %> ">
+                    <picture>
+                        <source srcset="https://fdnd-agency.directus.app/assets/<%= item.afbeelding %>?&format=avif" type="image/avif">
+                        <source srcset="https://fdnd-agency.directus.app/assets/<%= item.afbeelding %>?&format=webp" type="image/webp" >   
+                        <img src="https://fdnd-agency.directus.app/assets/<%= item.afbeelding %>" alt="<%= item.title %> Image" height="<%= item.afbeelding.height %>" width="<%= item.afbeelding.width %>">
+                    </picture>
+                </a>       
+            </li>
+            
+            <% }); %>
+        </ul>
+      
+      <button class="borrow">Lenen</button>
+
+<%- include('./partials/foot') %>
