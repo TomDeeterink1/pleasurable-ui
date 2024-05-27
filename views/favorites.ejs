@@ -1,7 +1,7 @@
 <%- include('./partials/head') %>
-    <article class="favorites">
     
-        <ul>
+    
+        <ul class="favorites">
             <% items.forEach(item => { %>
             <li>
                 <a href="./detail/<%= item.id %> ">
@@ -15,7 +15,7 @@
             
             <% }); %>
         </ul>
-      </article>
+      
       <button class="borrow">Lenen</button>
 
 <%- include('./partials/foot') %>
