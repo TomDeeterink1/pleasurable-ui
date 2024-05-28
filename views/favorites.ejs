@@ -2,6 +2,10 @@
     
     
         <ul class="favorites">
+            <div class="title">
+                <h1>Favorite</h1>
+                <a href="/">Terug naar <span>Home</span></a>
+            </div>
             <% items.forEach(item => { %>
             <li>
                 <a href="./detail/<%= item.id %> ">
@@ -11,6 +15,11 @@
                         <img src="https://fdnd-agency.directus.app/assets/<%= item.afbeelding %>" alt="<%= item.title %> Image" height="<%= item.afbeelding.height %>" width="<%= item.afbeelding.width %>">
                     </picture>
                 </a>       
+                <!-- <button class="info-expand"></button> -->
+                <form action="/favorites" method="delete" class="delete">
+                    <input type="hidden" name="itemDelete" value="<%= item.id %>">
+                    <button><span><i class='bx bx-x' ></i>Verwijder item</span></button>
+                </form>
             </li>
             
             <% }); %>

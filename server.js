@@ -54,6 +54,28 @@ app.get('/favorites', function(request, response) {
             }
     })
 })
+
+app.delete('/favorites/:id', function(request, response) {
+
+  const bookmark = `${apiUrl}oba_bookmarks`
+
+
+  fetch(bookmark , {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+  }).then((deleteResponse) => {
+    
+        if (request.body.favoriteclient) {
+            response.render('favorites', { added: true });
+        } else {
+            response.redirect(303, '/favorites');
+        }
+})
+});
+
+
   
 // Stel het poortnummer in waar express op moet gaan luisteren
 app.set('port', process.env.PORT || 8001)
