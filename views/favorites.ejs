@@ -16,12 +16,14 @@
                     </picture>
                 </a>       
                 <!-- <button class="info-expand"></button> -->
-                <form action="/favorites" method="delete" class="delete">
+                <form action="/favorites/delete/<%= item.id %>" method="post" class="delete">
                     <input type="hidden" name="itemDelete" value="<%= item.id %>">
                     <button><span><i class='bx bx-x' ></i>Verwijder item</span></button>
+                    <svg class='circular' viewbox='25 25 50 50'>
+                        <circle class='path' cx='50' cy='50' r='20' fill='none' stroke-width='2' stroke-miterlimit='10' ></circle>
+                    </svg>
                 </form>
             </li>
-            
             <% }); %>
         </ul>
       

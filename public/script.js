@@ -4,6 +4,9 @@ toggle = body.querySelector(".toggle"),
 searchBtn = body.querySelector(".search-box"),
 modeSwitch = body.querySelector(".toggle-switch"),
 modeText = body.querySelector(".mode-text");
+const fullfavitem = document.querySelector('.favorites li');
+const loadingcircle = document.querySelector('.delete svg');
+
 
 toggle.addEventListener("click" , () =>{
     sidebar.classList.toggle("close");
@@ -19,4 +22,39 @@ modeSwitch.addEventListener("click" , () =>{
         
     }
 });
+
+
+let deleteForm = document.querySelector('.delete');
+
+// clientside voor de delete
+deleteForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Voorkom standaardgedrag van het formulier
+    loadingcircle.classList.add("load")
+    // Maak een FormData-object van het formulier
+    let deleteItem = new FormData(this);
+
+    // Voeg 'favoriteclient' toe aan de FormData
+    deleteItem.append('favoriteclient', true);
+
+    // Voer het fetch-verzoek uit naar de delete-endpoint van de server
+    fetch(this.action, {
+        method: this.method,
+        body: deleteItem
+    })
+    .then(response => {
+        if (response.ok) {
+            // Als het verzoek succesvol is, kun je hier verdere acties ondernemen
+            console.log('Item succesvol verwijderd');
+            fullfavitem.classList.add('gone')
+        } else {
+            // Als er een fout optreedt, geef dan een foutmelding weer
+            console.error('Er is een fout opgetreden bij het verwijderen van het item');
+        }
+    })
+    .catch(error => {
+        console.error('Er is een fout opgetreden:', error);
+    });
+    
+});
+
 
