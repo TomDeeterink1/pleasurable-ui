@@ -43,7 +43,7 @@ deleteForm.addEventListener('submit', function(event) {
     })
     .then(response => {
         if (response.ok) {
-            // Als het verzoek succesvol is, kun je hier verdere acties ondernemen
+            // waneer het item succesvol is verwijderd voert hij het volgende uit
             console.log('Item succesvol verwijderd');
             fullfavitem.classList.add('gone')
         } else {

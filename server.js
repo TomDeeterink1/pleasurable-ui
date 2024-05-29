@@ -8,8 +8,7 @@ import fetchJson from "./helpers/fetch-json.js";
 const apiUrl = "https://fdnd-agency.directus.app/items/";
 const apiFamily = apiUrl + "oba_family";
 const apiProfile = apiUrl + "oba_profile";
-const apiItem =
-  apiUrl + "oba_item?fields=*,afbeelding.id,afbeelding.height,afbeelding.width";
+const apiItem = apiUrl + "oba_item?fields=*,afbeelding.id,afbeelding.height,afbeelding.width";
 
 // Maak een nieuwe express app aan
 const app = express();
