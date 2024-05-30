@@ -112,22 +112,26 @@ app.post('/detail/:id', function (request, response) {
 // Stel het poortnummer in waar express op moet gaan luisteren
 
 app.get('/personal-page/:id', function (request, response) {
+    const apiProfileId = `${apiProfile}?filter[id][_eq]=${request.params.id}`;
 
-    const apiProfilesUrl = `${apiUrl}apiProfilesEndpoint`;  // Vervang dit door de juiste URL
+
     const leeslijstFetch = `${apiUrl}oba_bookmarks?fields=*.*`;
 
     // Gebruik Promise.all om alle data in één keer op te halen
-    Promise.all([fetchJson(apiItems), fetchJson(apiProfilesUrl), fetchJson(leeslijstFetch)])
-        .then(([apiItems, apiProfiles, leeslijstData]) => {
+    Promise.all([fetchJson(apiItems), fetchJson(apiProfileId), fetchJson(leeslijstFetch)])
+        .then(([apiItems, apiProfileId, leeslijstData]) => {
             const itemsOpLeeslijst = leeslijstData.data.map(bookmark => bookmark.item);
 
             // Combineer de data en render de pagina
             response.render('personal-page', {
                 apiItems: apiItems.data,
-                apiProfiles: apiProfiles.data,
+                apiProfileID: apiProfileId.data,
                 bookmarkedItems: itemsOpLeeslijst
             });
-            console.log(itemsOpLeeslijst)
+            console.log(apiProfileId)
+
+
+
         })
         .catch(error => {
             console.error('Error fetching data:', error);
