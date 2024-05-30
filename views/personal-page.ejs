@@ -51,7 +51,9 @@
 
         <div class="details">
             <h2 class="details-text">Voor Jou</h2>
+            <form action="/books" method="get" class="details-form">
             <button class="details-buttons" id="forYoudetailsButton">Alles Weergeven</button>
+            </form>
         </div>
         <ul class="carousel">
             <% apiItems.slice(0, 16).forEach(function(item) { %>
@@ -69,16 +71,18 @@
     <section class="favourites">
         <div class="details">
             <h2>Favorieten</h2>
-            <button class="details-buttons" id="favoritesButton">Alles Weergeven</button>
+            <form action="/favorites" method="get" class="details-form">
+                <button type="submit" class="details-buttons" id="favoritesButton">Alles Weergeven</button>
+            </form>
         </div>
         <ul class="carousel">
             <% bookmarkedItems.slice(0, 16).forEach(item => { %>
-            <li class="carousel-items">
-                <a href="/detail/:<%= item.id %>">
-                    <img class="bookCarouselImg" src='https://fdnd-agency.directus.app/assets/<%- item.afbeelding %>'
-                         alt="<%- item.title %>" width="200" height="300">
-                </a>
-            </li>
+                <li class="carousel-items">
+                    <a href="/detail/:<%= item.id %>">
+                        <img class="bookCarouselImg" src='https://fdnd-agency.directus.app/assets/<%- item.afbeelding %>'
+                             alt="<%- item.title %>" width="200" height="300">
+                    </a>
+                </li>
             <% }) %>
         </ul>
     </section>
@@ -86,19 +90,22 @@
     <section class="borrowed">
         <div class="details">
             <h2>Geleende Boeken</h2>
-            <button class="details-buttons" id="borrowedBooksButton">Alles Weergeven</button>
+            <form action="/books" method="get" class="details-form">
+                <button type="submit" class="details-buttons" id="borrowedBooksButton">Alles Weergeven</button>
+            </form>
         </div>
         <ul class="carousel">
             <% apiItems.slice(0, 16).forEach(function(item) { %>
-            <li class="carousel-items">
-                <a href="/detail/:<%= item.id %>">
-                    <img class="bookCarouselImg" src='https://fdnd-agency.directus.app/assets/<%= item.afbeelding %>'
-                         alt="<%= item.title %>" width="200" height="300">
-                </a>
-            </li>
+                <li class="carousel-items">
+                    <a href="/detail/:<%= item.id %>">
+                        <img class="bookCarouselImg" src='https://fdnd-agency.directus.app/assets/<%= item.afbeelding %>'
+                             alt="<%= item.title %>" width="200" height="300">
+                    </a>
+                </li>
             <% }) %>
         </ul>
     </section>
+
 
 
 </section>

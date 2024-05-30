@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6304664-9f9f-4ec2-a987-ce408830eb69" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/views/books.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/styles/personal-page.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/styles/personal-page.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/scripts/personal-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/scripts/personal-page.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/personal-page.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/personal-page.ejs" afterDir="false" />
     </list>
@@ -62,6 +63,7 @@
       <recent name="C:\Users\daan\PhpstormProjects\pleasurable-ui-team-oba\public\img" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\daan\PhpstormProjects\pleasurable-ui-team-oba\views" />
       <recent name="C:\Users\daan\PhpstormProjects\pleasurable-ui-team-oba\public\scripts" />
       <recent name="C:\Users\daan\PhpstormProjects\pleasurable-ui-team-oba\public" />
       <recent name="C:\Users\daan\Documents\GitHub\pleasurable-ui-team-oba\public\img" />
@@ -93,7 +95,8 @@
       <workItem from="1716800719671" duration="1779000" />
       <workItem from="1716905791991" duration="4095000" />
       <workItem from="1717061369085" duration="6289000" />
-      <workItem from="1717074795184" duration="2865000" />
+      <workItem from="1717074795184" duration="7790000" />
+      <workItem from="1717095905568" duration="1606000" />
     </task>
     <servers />
   </component>

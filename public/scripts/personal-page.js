@@ -1,5 +1,6 @@
-// personal page load animations
+// gsap animations
 gsap.from('h1', {duration: 0.6, y: '100%', delay: 0.7, ease: 'ease-out'});
+
 // timeline for the carousel animation
 const carouselTimeline = gsap.timeline({defaults: { duration: 1 }});
 
@@ -7,13 +8,6 @@ carouselTimeline
     .from('.for-you', {duration: 0.5, x: '-200%', delay: 0.7, ease: 'ease-in'})
     .from('.favourites', {duration: 0.5, x: '200%', ease: 'ease-in'})
     .from('.borrowed', {duration: 0.5, x: '-200%', ease: 'ease-in'});
-
-// timeline for for you
-const forYouTimeline = gsap.timeline({defaults: { duration: 1 }});
-
-// forYouTimeline
-// .from('.for-you-details', {duration: 0.7, y: '100%', ease: 'ease-in', delay: 0.1});
-
 
 // detail active buttons
 const forYouDetailsButton = document.getElementById('forYoudetailsButton');
@@ -32,76 +26,12 @@ const borrowedBooksDetails = document.querySelector('.borrowed-books-details');
 const contentWrapperActive = document.querySelector('.content-wrapper');
 const pageText = document.querySelector('.page');
 
-// click events
-
-// voor details active
-
-// for you
-forYouDetailsButton.addEventListener('click', () => {
-    // Zorg ervoor dat de animaties in de timeline 3x zo snel gaan
-    carouselTimeline.timeScale(2);
-
-    // Reverse de animatie op de timeline met .reverse
-    carouselTimeline.reverse().eventCallback("onReverseComplete", () => {
-        detailsForYouActive();
-        activeContentWrapper();
-    });
-});
-
-// favorites
-favoritesDetailsButton.addEventListener('click', () => {
-    // Zorg ervoor dat de animaties in de timeline 3x zo snel gaan
-    carouselTimeline.timeScale(2);
-
-    // Reverse de animatie op de timeline met .reverse
-    carouselTimeline.reverse().eventCallback("onReverseComplete", () => {
-        detailsFavoritesActive();
-        activeContentWrapper();
-    });
-});
-
-// borrowed books
-borrowedBooksDetailsButton.addEventListener('click', () => {
-    // Zorg ervoor dat de animaties in de timeline 3x zo snel gaan
-    carouselTimeline.timeScale(2);
-
-    // Reverse de animatie op de timeline met .reverse
-    carouselTimeline.reverse().eventCallback("onReverseComplete", () => {
-        detailsBorrowedBooksActive();
-        activeContentWrapper();
-    });
-});
-
-// voor details deactive
-
-// for you
-forYouDetailsCloseButton.addEventListener('click', () => {
-    // Zorg ervoor dat de animaties in de timeline 3x zo snel gaan
-    console.log('ik ben geklikt')
-        detailsForYouDeactive();
-        activeContentWrapperDeactive();
-});
-
-// favorites
-favoritesDetailsCloseButton.addEventListener('click', () => {
-        detailsFavoritesDeactive();
-        activeContentWrapperDeactive();
-});
-
-// borrowed books
-borrowedBooksDetailsCloseButton.addEventListener('click', () => {
-        detailsBorrowedBooksDeactive();
-        activeContentWrapperDeactive();
-});
-
-
-
 // details active functions
 
 // for you
 function detailsForYouActive(){
     forYouDetails.classList.add('for-you-details-active');
-    pageText.innerHTML = 'Voor Jou'
+    pageText.innerHTML = 'Voor Jou';
 }
 
 //favorites
@@ -125,29 +55,27 @@ function activeContentWrapper(){
 // details deactive functions
 
 // for you
-// for you
 function detailsForYouDeactive(){
     forYouDetails.classList.remove('for-you-details-active');
     pageText.innerHTML = 'Gebruikers Pagina';
-    carouselTimeline.play(); // Speel de timeline-animatie opnieuw af zonder omkeren
-    activeContentWrapperDeactive(); // Roep de functie aan om de content wrapper ook te deactiveren
+    carouselTimeline.play();
+    activeContentWrapperDeactive();
 }
-
 
 //favorites
 function detailsFavoritesDeactive(){
     favoritesDetails.classList.remove('favorites-details-active');
-    pageText.innerHTML = 'Gebruikers Pagina'
-    carouselTimeline.play(); // Speel de timeline-animatie opnieuw af zonder omkeren
-    activeContentWrapperDeactive(); // Roep de functie aan om de content wrapper ook te deactiveren
+    pageText.innerHTML = 'Gebruikers Pagina';
+    carouselTimeline.play();
+    activeContentWrapperDeactive();
 }
 
 // borrowed books
 function detailsBorrowedBooksDeactive(){
     borrowedBooksDetails.classList.remove('borrowed-books-details-active');
-    pageText.innerHTML = 'Gebruikers Pagina'
-    carouselTimeline.play(); // Speel de timeline-animatie opnieuw af zonder omkeren
-    activeContentWrapperDeactive(); // Roep de functie aan om de content wrapper ook te deactiveren
+    pageText.innerHTML = 'Gebruikers Pagina';
+    carouselTimeline.play();
+    activeContentWrapperDeactive();
 }
 
 // content wrapper
@@ -156,3 +84,83 @@ function activeContentWrapperDeactive(){
     console.log('wrapper');
 }
 
+
+// Alles weergeven functie
+
+// Wacht tot de DOM volledig geladen is voordat de code wordt uitgevoerd
+document.addEventListener('DOMContentLoaded', () => {
+    // Event listener voor de Favorieten knop
+    favoritesDetailsButton.addEventListener('click', (e) => {
+        // Voorkom de standaardactie van de knop (bijv. form submission)
+        e.preventDefault();
+        // Log naar de console dat de Favorieten knop is ingedrukt
+        console.log("Favorieten knop gedrukt");
+        // Versnel de animatie van de carrousel
+        carouselTimeline.timeScale(2);
+        // Speel de animatie in omgekeerde volgorde af
+        carouselTimeline.reverse().eventCallback("onReverseComplete", () => {
+            // Activeer de details weergave voor Favorieten
+            detailsFavoritesActive();
+            // Activeer de content wrapper (waarschijnlijk om inhoud zichtbaar te maken)
+            activeContentWrapper();
+        });
+    });
+
+    // Event listener voor de Voor Jou knop
+    forYouDetailsButton.addEventListener('click', (e) => {
+        // Voorkom de standaardactie van de knop
+        e.preventDefault();
+        // Log naar de console dat de Voor Jou knop is ingedrukt
+        console.log("Voor Jou knop gedrukt");
+        // Versnel de animatie van de carrousel
+        carouselTimeline.timeScale(2);
+        // Speel de animatie in omgekeerde volgorde af
+        carouselTimeline.reverse().eventCallback("onReverseComplete", () => {
+            // Activeer de details weergave voor Voor Jou
+            detailsForYouActive();
+            // Activeer de content wrapper
+            activeContentWrapper();
+        });
+    });
+
+    // Event listener voor de Geleende Boeken knop
+    borrowedBooksDetailsButton.addEventListener('click', (e) => {
+        // Voorkom de standaardactie van de knop
+        e.preventDefault();
+        // Log naar de console dat de Geleende Boeken knop is ingedrukt
+        console.log("Geleende Boeken knop gedrukt");
+        // Versnel de animatie van de carrousel
+        carouselTimeline.timeScale(2);
+        // Speel de animatie in omgekeerde volgorde af
+        carouselTimeline.reverse().eventCallback("onReverseComplete", () => {
+            // Activeer de details weergave voor Geleende Boeken
+            detailsBorrowedBooksActive();
+            // Activeer de content wrapper
+            activeContentWrapper();
+        });
+    });
+
+    // Event listener voor de sluitknop van Voor Jou details
+    forYouDetailsCloseButton.addEventListener('click', () => {
+        // Deactiveer de details weergave voor Voor Jou
+        detailsForYouDeactive();
+        // Deactiveer de content wrapper
+        activeContentWrapperDeactive();
+    });
+
+    // Event listener voor de sluitknop van Favorieten details
+    favoritesDetailsCloseButton.addEventListener('click', () => {
+        // Deactiveer de details weergave voor Favorieten
+        detailsFavoritesDeactive();
+        // Deactiveer de content wrapper
+        activeContentWrapperDeactive();
+    });
+
+    // Event listener voor de sluitknop van Geleende Boeken details
+    borrowedBooksDetailsCloseButton.addEventListener('click', () => {
+        // Deactiveer de details weergave voor Geleende Boeken
+        detailsBorrowedBooksDeactive();
+        // Deactiveer de content wrapper
+        activeContentWrapperDeactive();
+    });
+});

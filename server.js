@@ -162,3 +162,15 @@ app.get('/favorites', function (request, response) {
         })
 })// Stel het poortnummer in waar express op moet gaan luisteren
 
+app.get('/books', function (request, response) {
+    // console.log(request.params)
+
+    // Haal de details op van het item met het opgegeven ID
+    fetchJson(apiItem).then((items) => {
+        // Render de detailpagina en geef de nodige data mee
+        response.render('books', {
+            items: items.data,
+        });
+    });
+});
+
