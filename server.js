@@ -33,7 +33,6 @@ app.get('/', function (request, response) {
     })
 })
 
-app.set('port', process.env.PORT || 8001)
 
 // Start express op, haal daarbij het zojuist ingestelde poortnummer op
 app.listen(app.get('port'), function () {
