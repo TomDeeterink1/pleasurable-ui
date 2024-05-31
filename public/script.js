@@ -57,4 +57,11 @@ deleteForm.addEventListener('submit', function(event) {
     
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    document.body.classList.add('js-enabled');
+});
 
+function grow(event) {
+    const item = event.currentTarget;
+    item.classList.toggle('active');
+}
